@@ -1,0 +1,12 @@
+<section class="intercooperacio-intro mu-edge-image mu-edge-image--left mu-bg mu-bg--primary">
+    <div class="row expanded mu-edge-image__image-wrapper">
+        <div class="medium-7 columns mu-edge-image__image" data-interchange="[{{ image.src|resize(600) }}, small], [{{ image.src|resize(1000) }}, medium], [{{ image.src|resize(1400) }}, large]"></div>
+    </div>
+    <div class="row intercooperacio-intro__intro-row align-middle">
+        <div class="medium-6 medium-offset-6 columns mu-edge-image__content mu-bg mu-bg--primary">
+            <h2>{{ title }}</h2>
+            <hr class="separator">
+            {{ content|wpautop }}
+        </div>
+    </div>
+</section>

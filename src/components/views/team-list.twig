@@ -1,0 +1,25 @@
+<div class="row column team-list">
+    <div class="row small-up-1 medium-up-2 large-up-3">
+        {% for member in team %}
+            <div class="column team-member">
+                <div class="team-member__image" data-team-member-image="{{ member.image.src|resize(300) }}" data-team-member-alt-image="{{ member.image_alt.src|resize(300) }}" style="background-image: url({{ member.image.src|resize(300) }});"></div>
+                <h4 class="team-member__name">{{ member.name }}</h4>
+                <h4 class="team-member__surname">{{ member.surname}}</h4>
+                <ul class="mu-icon-list mu-icon-list--horizontal team-member__meta">
+                    {% if member.type == 'member' %}
+                        <li class="mu-icon-list__entry"><span class="team-member__pill mu-smaller">{{ __('team.member') }}</span></li>
+                    {% endif %}
+                    <li class="mu-icon-list__entry">{{ member.position }}</li>
+                </ul>
+                {{ member.bio|wpautop }}
+                <ul class="mu-icon-list mu-icon-list--horizontal team-member__social">
+                    {% if member.email %}<li class="mu-icon-list__entry"><a href="mailto:{{ member.email }}"><i class="fa fa-envelope-o"></i></a></li>{% endif %}
+                    {% if member.linkedin %}<li class="mu-icon-list__entry"><a href="{{ member.linkedin }}"><i class="fa fa-linkedin"></i></a></li>{% endif %}
+                    {% if member.twitter %}<li class="mu-icon-list__entry"><a href="{{ member.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                    {% if member.instagram %}<li class="mu-icon-list__entry"><a href="{{ member.instagram }}"><i class="fa fa-instagram"></i></a></li>{% endif %}
+                    {% if member.pinterest %}<li class="mu-icon-list__entry"><a href="{{ member.pinterest }}"><i class="fa fa-pinterest-p"></i></a></li>{% endif %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</div>

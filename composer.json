@@ -1,0 +1,8 @@
+{
+    "name": "{{author_slug}}/{{theme_slug}}",
+    "type": "wordpress-theme",
+    "minimum-stability": "stable",
+    "require": {
+        "doup/ent": "*"
+    }
+}

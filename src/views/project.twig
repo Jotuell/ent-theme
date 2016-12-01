@@ -1,0 +1,106 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <section class="project-intro">
+        <div class="column row project-intro__featured-image-container">
+            {% if project.is_featured %}
+                <div class="project-intro__featured-image" data-interchange="[{{ project.thumbnail.src|resize(600) }}, small], [{{ project.thumbnail.src|resize(1000) }}, medium], [{{ project.thumbnail.src|resize(1400) }}, large]"></div>
+            {% endif %}
+        </div>
+        <div class="column row">
+            <div class="row project-intro__header">
+                <div class="small-10 medium-8 large-7 large-order-2 columns align-middle">
+                    <hr class="separator">
+                    <h2 class="project-intro__title">{{ project.title }}</h2>
+                </div>
+                <div class="small-12 medium-8 large-5 large-order-1 columns">
+                    <div class="project-intro__metadata-box">
+                        <div style="width: 100%;">
+                            {% for service in project.services %}
+                                <h4 class="project-intro__service">{{ service.title }}</h4>
+                            {% endfor %}
+                            <hr>
+                            <ul class="mu-icon-list">
+                                {% if project.start_year %}
+                                    <li class="mu-icon-list__entry"><i class="fa fa-calendar"></i><strong>{{ __('project.start_year') }}</strong>: {{ project.start_year }}</li>
+                                    <li class="mu-icon-list__entry"><i class="fa fa-calendar"></i><strong>{{ __('project.end_year') }}</strong>: {% if project.is_finished %}{{ project.end_year }}{% else %}{{ __('project.wip') }}{% endif %}</li>
+                                {% endif %}
+                                {% if project.energy_class %}
+                                    <li class="mu-icon-list__entry"><i class="fa fa-lightbulb-o"></i><strong>{{ __('project.energy_class') }}</strong>: <span class="energy-class energy-class--{{ project.energy_class }}">{{ project.energy_class }}</span></li>
+                                {% endif %}
+                                {% if project.client %}
+                                    <li class="mu-icon-list__entry"><i class="fa fa-user"></i><strong>{{ __('project.client') }}</strong>: {{ project.client }}</li>
+                                {% endif %}
+                                {% if project.place %}
+                                    <li class="mu-icon-list__entry"><i class="fa fa-map-marker"></i><strong>{{ __('project.place') }}</strong>: {{ project.place }}</li>
+                                {% endif %}
+                                {% if project.team %}
+                                    <li class="mu-icon-list__entry"><i class="fa fa-users"></i><strong>{{ __('project.team') }}</strong>: {{ project.team }}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-intro__content">
+                {{ project.content|wpautop }}
+            </div>
+            {% if project.links or project.attachments %}
+                <div class="row">
+                    {% if project.links %}
+                        <div class="large-6 columns project-intro__links">
+                            <h6>{{ __('project.links') }}</h6>
+                            <ul class="mu-icon-list">
+                                {% for link in project.links %}
+                                    <li class="mu-icon-list__entry"><a href="{{ link.url }}"><i class="fa fa-external-link"></i>{{ link.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if project.attachments %}
+                        <div class="large-6 columns project-intro__attachments">
+                            <h6>{{ __('project.attachments') }}</h6>
+                            <ul class="mu-icon-list">
+                                {% for attachment in project.attachments %}
+                                    <li class="mu-icon-list__entry"><a href="{{ TimberImage(attachment.file).src }}"><i class="fa fa-file-o"></i>{{ attachment.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    {% for section in project.sections %}
+        <section class="project-section {#{{ loop.first ? 'project-section--no-border' }}#}">
+            <div class="row column">
+                {% if section.has_content == 'yes' %}
+                    <h3>{{ section.title }}</h3>
+                    <hr class="separator">
+                    {{ section.content|wpautop }}
+                {% endif %}
+                {% if section.media %}
+                    <div class="media-gallery row small-collapse small-up-2 medium-up-3 large-up-4" data-media-gallery>
+                        {% for media in section.media %}
+                            <div class="column">
+                            {% if media._type == '_image' %}
+                                {% set img = TimberImage(media.image) %}
+                                <a class="media-gallery__item media-gallery__item--image"
+                                   title="{{ media.description }}"
+                                   href="{% if img.width > 1024 %}{{ img.src|resize(1024) }}{% else %}{{ img.src }}{% endif %}"
+                                   data-interchange="[{{ img.src|resize(600) }}, small]"></a>
+                            {% endif %}
+                            {% if media._type == '_youtube' %}
+                            {% set img = TimberImage(media.image) %}
+                                <a class="media-gallery__item media-gallery__item--video mfp-iframe"
+                                   href="{{ media.video_url }}"
+                                   data-interchange="[{{ img.src|resize(600) }}, small]"></a>
+                            {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    {% endfor %}
+{% endblock %}

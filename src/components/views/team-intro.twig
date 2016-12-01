@@ -1,0 +1,14 @@
+<div class="team-intro">
+    <div class="team-intro__image" data-interchange="[{{ image.src|resize(800) }}, small], [{{ image.src|resize(1200) }}, medium], [{{ image.src|resize(1800) }}, large]"></div>
+    <div class="team-intro__content mu-bg mu-bg--primary intro-section intro-section--primary">
+        <div class="row">
+            <div class="small-12 medium-4 columns">
+                <h2>{{ title }}</h2>
+                <hr class="separator">
+            </div>
+            <div class="small-12 medium-8 columns intro-section__intro">
+                {{ content|wpautop }}
+            </div>
+        </div>
+    </div>
+</div>

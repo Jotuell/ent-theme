@@ -1,0 +1,29 @@
+<section class="contact-page">
+    <div class="row">
+        <div class="small-12 medium-6 large-5 columns contact-page__contact">
+            {{ context.footer_address }}
+        </div>
+        <div class="small-12 medium-6 large-7 columns">
+            <div id="contact-map" class="contact-page__map"></div>
+        </div>
+    </div>
+</section>
+<script>
+    function initMap() {
+        var mapCenter = { lat: {{ lat }}, lng: {{ lng }} };
+        var map = new google.maps.Map(document.getElementById('contact-map'), {
+            // https://snazzymaps.com/style/83/muted-blue
+            // styles: [{"featureType":"all","stylers":[{"saturation":0},{"hue":"#e7ecf0"}]},{"featureType":"road","stylers":[{"saturation":-70}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"visibility":"simplified"},{"saturation":-60}]}],
+            center: mapCenter,
+            zoom: 16,
+            disableDefaultUI: true,
+            zoomControl: true,
+        });
+
+        var marker = new google.maps.Marker({
+            position: mapCenter,
+            map: map,
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7I0KhmO7kN9LGRBDfwyHsLZ-WgARzJg8&callback=initMap" async="" defer=""></script>

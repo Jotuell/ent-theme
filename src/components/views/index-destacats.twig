@@ -1,0 +1,16 @@
+<section class="index-destacats" index-featured-projects>
+    {% for project in projects %}
+        <section class="mu-edge-image mu-edge-image--right mu-bg--primary">
+            <div class="row expanded mu-edge-image__image-wrapper">
+                <div class="medium-7 medium-offset-5 columns mu-edge-image__image" data-interchange="[{{ project.thumbnail.src|resize(600) }}, small], [{{ project.thumbnail.src|resize(1000) }}, medium], [{{ project.thumbnail.src|resize(1400) }}, large]"></div>
+            </div>
+            <div class="row">
+                <div class="medium-6 columns mu-edge-image__content mu-bg--primary">
+                    <h2>{{ project.title }}</h2>
+                    {{ project.home_intro|wpautop }}
+                    <a class="button button--square" href="{{ project.link }}">{{ __('project.view') }}</a>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+</section>

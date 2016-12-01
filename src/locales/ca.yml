@@ -1,0 +1,30 @@
+all_projects:        Veure tots el projectes
+all_projects_filter: Tots<br>els projectes
+all_posts:           Veure tots els articles
+related_projects:    Projectes relacionats
+clients:             Clients
+team:
+    member:        Soci
+    collaborators: Col·laboradors
+project:
+    start_year:   Inici
+    end_year:     Final
+    wip:          En curs
+    energy_class: Classificació energètica
+    client:       Client
+    place:        Ubicació
+    team:         Equip
+    links:        Enllaços relacionats
+    attachments:  Arxius
+    view:         Veure el projecte
+blog:
+    news:       Notícies
+    more_news:  Veure més notícies
+    more_posts: Veure més articles
+    
+wp:
+    search:
+        text:       Cerca
+        no_results: No hi ha resultats
+    blog:
+        read_more: Llegir més

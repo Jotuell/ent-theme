@@ -1,0 +1,36 @@
+<section class="index-actualitat">
+    <div class="row">
+        <div class="small-12 medium-6 large-8 columns">
+            <h2 class="index-actualitat__title"><a href="{{ posts_link }}">Blog</a></h2>
+            <div class="row index-post">
+                <div class="small-12 large-6 columns">
+                    <a href="{{ post.link }}">
+                        <div class="index-post__image" data-interchange="[{{ post.thumbnail.src|resize(400) }}, small], [{{ post.thumbnail.src|resize(400) }}, medium], [{{ post.thumbnail.src|resize(600) }}, large]"></div>
+                    </a>
+                </div>
+                <div class="small-12 large-6 columns">
+                    <h3 class="index-post__title"><a href="{{ post.link }}">{{ post.title }}</a></h3>
+                    <ul class="mu-icon-list mu-icon-list--horizontal index-post__meta">
+                        <li class="mu-icon-list__entry"><i class="fa fa-calendar"></i>{{ post.date|date("Y-m-d") }}</li>
+                    </ul>
+                    <p>{{ post.post_content|excerpt(80) }}</p>
+                    <a class="button button--square button--primary" href="{{ post.link }}">{{ __('wp.blog.read_more') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="small-12 medium-6 large-4 columns">
+            <h2 class="index-actualitat__title index-actualitat__title--news"><a href="{{ news_link }}">{{ __('blog.news') }}</a></h2>
+            {% for new in news %}
+                <div class="blog-item {{ loop.last ? 'blog-item--last' }}">
+                    <a href="{{ new.link }}">
+                        <h6 class="blog-item__title"><i class="fa fa-chevron-right blog-item__icon"></i>{{ new.title }}</h6>
+                        <ul class="mu-icon-list mu-icon-list--horizontal index-post__meta">
+                            <li class="mu-icon-list__entry"><i class="fa fa-calendar"></i>{{ new.date|date("Y-m-d") }}</li>
+                        </ul>
+                        <p>{{ new.post_content|excerpt(15) }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

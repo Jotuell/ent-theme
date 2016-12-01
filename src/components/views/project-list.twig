@@ -1,0 +1,51 @@
+<div class="row column project-list">
+    <div class="row small-up-1 medium-up-3 small-collapse">
+        {% for project in featured %}
+            <div class="column featured-project" {#data-project data-services="{{ project.service_ids|json_encode }}"#}>
+                <a class="featured-project__wrapper" href="{{ project.link }}">
+                    <div class="featured-project__image" data-interchange="[{{ project.thumbnail.src|resize(500) }}, small], [{{ project.thumbnail.src|resize(600) }}, large]"></div>
+                    <div class="featured-project__content">
+                        <h4 class="featured-project__title">{{ project.title }}</h4>
+                        <p class="featured-project__place">{{ project.place }}</p>
+                        <p class="featured-project__service">{{ project.service }}<i class="fa fa-plus show-for-large"></i></p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="projects-service-filter row small-up-2 medium-up-4 medium-collapse" data-projects-service-filter>
+        <div class="column projects-service-filter__entry projects-service-filter__entry--active">
+            <a data-service-id=''>
+                <div class="projects-service-filter__icon projects-service-filter__icon--tots"></div>
+                {{ __('all_projects_filter') }}
+            </a>
+        </div>
+        {% for service in services %}
+            <div class="column projects-service-filter__entry projects-service-filter__entry--{{ service.class }}">
+                <a data-service-id="{{ service.id }}">
+                    <div class="projects-service-filter__icon projects-service-filter__icon--{{ service.class }}"></div>
+                    {{ service.title }}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="common-projects" data-common-projects-list>
+        {% for project in list %}
+            <div class="common-projects__project" data-project data-services="{{ project.service_ids|json_encode }}">
+                <span class="common-projects__icons">
+                    {% for service in project.services %}
+                        <div class="common-projects__icon common-projects__icon--{{ service.class }}"></div>
+                    {% endfor %}
+                </span>
+                <span class="common-projects__content">
+                    <a href="{{ project.link }}"><h6 class="common-projects__title">{{ project.title }}</h6></a>
+                    <span class="common-projects__place"> // {{ project.place }}</span>
+                    {#
+                    <span>{{ project.start_year }} – {{ project.end_year }}</span>.
+                    <strong>{{ project.is_featured ? 'FEATURED!' : '' }}</strong><br>
+                    #}
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+</div>

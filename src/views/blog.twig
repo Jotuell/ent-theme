@@ -1,0 +1,49 @@
+{% extends "layout-blog.twig" %}
+
+{% block main_content %}
+    <h2 class="blog-index__title blog-index__title--{{ main_class }}">{{ main_title }}</h2>
+    {% for post in main_posts %}
+        <div class="post-box {% if is_blog %}post-box--post{% else %}post-box--new{% endif %} {{ loop.last ? 'post-box--last' }}">
+            <a href="{{ post.link }}">
+                {% if is_blog %}
+                    <img class="post-box__image" src="{{ post.one_image.src|resize(180, 180) }}" />
+                    <h4>{{ post.title }}</h4>
+                {% else %}
+                    <img class="post-box__image" src="{{ post.one_image.src|resize(80, 80) }}" />
+                    <h5>{{ post.title }}</h5>
+                {% endif %}
+            </a>
+            <ul class="mu-icon-list mu-icon-list--horizontal">
+                <li class="mu-icon-list__entry"><i class="fa fa-calendar"></i>{{ post.date }}</li>
+                <li class="mu-icon-list__entry"><i class="fa fa-user"></i>{{ post.author.name }}</li>
+            </ul>
+            {% if is_blog %}
+                <p>{{ post.post_content|excerpt(60) }}…</p>
+            {% endif %}
+        </div>
+	{% endfor %}
+
+    {% if main_posts.pagination.prev %}
+        <a class="button float-left" href="{{main_posts.pagination.prev.link}}" class="prev {{main_posts.pagination.prev.link|length ? '' : 'invisible'}}">Anterior</a>
+    {% endif %}
+    {% if main_posts.pagination.next %}
+        <a class="button float-right" href="{{main_posts.pagination.next.link}}" class="next {{main_posts.pagination.next.link|length ? '' : 'invisible'}}">Següent</a>
+    {% endif %}
+{% endblock %}
+
+{% block sidebar_content %}
+    <h2 class="blog-index__title blog-index__title--{{ alt_class }}">{{ alt_title }}</h2>
+    <div class="blog-index__alt-container blog-index__alt-container--{{ alt_class }}">
+        {% for post in alt_posts %}
+            <div class="blog-item blog-item--no-excerpt {{ loop.last ? 'blog-item--last' }}">
+                <a href="{{ post.link }}">
+                    <h6 class="blog-item__title"><i class="fa fa-chevron-right blog-item__icon"></i>{{ post.title }}</h6>
+                    <ul class="mu-icon-list mu-icon-list--horizontal">
+                        <li class="mu-icon-list__entry"><i class="fa fa-calendar"></i>{{ post.date }}</li>
+                    </ul>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div><a style="width: 100%;" class="button button--square {% if is_blog %}button--primary{% else %}button--black-neutral{% endif %}" href="{{ alt_more_url }}">{{ alt_more_title }}</a></div>
+{% endblock %}

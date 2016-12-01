@@ -1,0 +1,17 @@
+<section class="entity-row {{ bg == 'neutral' ? 'mu-bg mu-bg--neutral' }}">
+    <div class="row">
+        <div class="small-12 medium-4 columns entity-row__image-container">
+            {% if link.url %}<a href="{{ link.url }}">{% endif %}
+            <img class="entity-row__image" src="{{ image.src|resize(250) }}">
+            {% if link.url %}</a>{% endif %}
+        </div>
+        <div class="small-12 medium-8 columns">
+            <hr class="separator">
+            <h3>{{ title }}</h3>
+            {{ content|wpautop }}
+            {% if link.url %}
+                <a href="{{ link.url }}" class="button button--square button--black-neutral">{{ link.title }}</a>
+            {% endif %}
+        </div>
+    </div>
+</section>

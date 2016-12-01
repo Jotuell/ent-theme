@@ -1,0 +1,36 @@
+<div class="celobert-page">
+    <section class="intro-section">
+        <div class="row">
+            <div class="small-12 medium-4 columns">
+                <h2>{{ title }}</h2>
+                <hr class="separator">
+            </div>
+            <div class="small-12 medium-8 columns intro-section__intro">
+                {{ intro|wpautop }}
+            </div>
+        </div>
+    </section>
+    <section class="mu-edge-image mu-edge-image--right mu-bg mu-bg--primary">
+        <div class="row expanded mu-edge-image__image-wrapper">
+            <div class="medium-7 medium-offset-5 columns mu-edge-image__image" data-interchange="[{{ image.src|resize(600) }}, small], [{{ image.src|resize(1000) }}, medium], [{{ image.src|resize(1400) }}, large]"></div>
+        </div>
+        <div class="row">
+            <div class="medium-6 columns mu-edge-image__content mu-bg mu-bg--primary">
+                <h3>{{ title_a }}</h3>
+                {{ text_a|wpautop }}
+                <h3 class="som-b">{{ title_b }}</h3>
+                {{ text_b|wpautop }}
+            </div>
+        </div>
+    </section>
+    <section class="clients">
+        <div class="row column">
+            <h4 class="clients__title">{{ __('clients') }}</h4>
+            <div class="clients__list" data-client-logos>
+                {% for client in clients %}
+                    <a href="{{ client.url }}"><div class="clients__logo" style="background-image: url({{ client.image.src|resize(null, 100) }}); width: {{ (client.image.width * 100) / (client.image.height + 1) }}px;" alt='{{ client.name }}'></div></a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>

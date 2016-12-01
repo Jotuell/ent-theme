@@ -1,0 +1,78 @@
+<div class="service-page">
+    <section class="mu-edge-image mu-edge-image--left mu-bg">
+        <div class="row expanded mu-edge-image__image-wrapper">
+            <div class="medium-7 columns mu-edge-image__image" data-interchange="[{{ image.src|resize(600) }}, small], [{{ image.src|resize(1000) }}, medium], [{{ image.src|resize(1400) }}, large]"></div>
+        </div>
+        {% if video_url %}
+            <div class="mu-edge-image__video">
+                <a href="{{ video_url }}" data-media-popup class="media-gallery__item media-gallery__item--video mfp-iframe"></a>
+            </div>
+        {% endif %}
+        <div class="row service-page__intro-row align-middle">
+            <div class="medium-6 medium-offset-6 columns mu-edge-image__content mu-bg">
+                <h2>{{ context.page.title }}</h2>
+                <hr class="separator">
+                {{ content|wpautop }}
+                <div class="service-page__overlay" data-interchange="[{{ image_overlay.src|resize(600) }}, small], [{{ image_overlay.src|resize(1000) }}, large]"></div>
+            </div>
+        </div>
+    </section>
+    <section class="service-list mu-bg">
+        <div class="row column">
+            <hr class="separator">
+            <h3>{{ service_list_title }}</h3>
+            <div class="row">
+                {% for column in service_list %}
+                    <div class="small-12 medium-4 columns {{ loop.last ? 'last' }} {{ loop.first ? 'first' }}">
+                        <ul class="mu-icon-list">
+                            {% for subservice in column %}
+                                <li class="mu-icon-list__entry">
+                                    <i class="fa fa-chevron-right"></i>{{ subservice }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="mu-bg mu-bg--primary mu-bg--primary-shadow service-cta">
+        <div class="row column">
+            <h3 class="service-cta__title">{{ contact }}</h3>
+            <a class="button button--square" href="{{ contact_link.url }}">{{ contact_link.title }}</a>
+        </div>
+    </section>
+    <section class="service-related-projects">
+        <div class="row column">
+            <h3 class="service-related-projects__title">{{ __('related_projects') }}</h3>
+            <div class="row small-up-1 medium-up-2 large-up-3">
+                {% for project in related_projects %}
+                    <div class="column service-related-project {{ loop.last ? 'show-for-large' : '' }}">
+                        <a href="{{ project.link }}">
+                            <div class="service-related-project__image" style="background-image: url({{ project.thumbnail.src|resize(400) }});"></div>
+                            <h4 class="service-related-project__title">{{ project.title }}</h4>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <a class="button button--square button--black-neutral" href="{{ get_permalink(48) }}#service-{{ service }}">{{ __('all_projects') }}</a>
+        </div>
+    </section>
+    {% if related_news|length %}
+        <section class="service-related-news mu-bg--primary mu-bg--primary-shadow">
+            <div class="row column">
+                <div class="row small-up-1 medium-up-2 large-up-3">
+                    {% for new in related_news %}
+                        <div class="column service-related-new {{ loop.last ? 'show-for-large' : '' }}">
+                            <a href="{{ new.link }}">
+                                <h6 class="service-related-new__title"><i class="mu-smaller fa fa-chevron-right"></i>{{ new.title }}</h6>
+                                <p class="service-related-new__excerpt">{{ new.post_content|excerpt(35) }}…</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="button button--square" href="{{ get_permalink(4) }}">{{ __('all_posts') }}</a>
+            </div>
+        </section>
+    {% endif %}
+</div>

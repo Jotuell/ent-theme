@@ -1,0 +1,119 @@
+{% spaceless %}
+{% import "ent/foundation.twig" as ent %}
+<!doctype html>
+<html {{ site.language_attributes }} class="no-js">
+<head>
+    <meta charset="{{ site.charset }}">
+    <title>
+        {% if wp_title %}
+            {{ wp_title }} - {{ site.name }}
+        {% else %}
+            {{ site.name }}
+        {% endif %}
+    </title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="stylesheet" href="{{ asset('main.css') }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="pingback" href="{{ site.pingback_url }}">
+    <link href="https://fonts.googleapis.com/css?family=Heebo:300,400,700" rel="stylesheet">
+    {{ wp_head }}
+</head>
+<body class="{{ body_class }}">
+	<header>
+        <div class="top-border"></div>
+        <div class="search-form" style="display: none;" data-search-modal>
+            <div class="search-form__form input-group">
+                <form role="search" method="get" action="{{ site.link }}">
+                    <input class="input-group-field search-form__field" name="s" type="text" value="{{ function('get_search_query') }}" placeholder="{{ __('wp.search.text') }}">
+                </form>
+                <div class="input-group-button">
+                    <a class="button search-form__close" data-search-modal-close href="#"><i class="fa fa-close"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="containers-wrapper" data-small-menu>
+            <div class="column row">
+                <div class="containers-wrapper__relative">
+                    <div class="logo-container">
+                        <a href="{{ site.link }}"><h1 class="logo">Celobert</h1></a>
+                    </div>
+                    <div class="hamburger-container">
+                        <div class="hamburger float-right hide-for-large">
+                            <a href="#" data-menu-toggle>
+                                <i class="fa fa-bars" data-closed-class="fa fa-bars" data-opened-class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="secondary-container show-for-large">
+                        {#
+                        <ul class="menu-horizontal locales-wrapper" data-dropdown-menu>
+                            <li>
+                                <a href="#">{{ locale.native_name }} <i class="fa fa-angle-down"></i></a>
+                                <ul class="locale-menu">
+                                    {% for l in locales %}
+                                        <li><a href="{{ l.url }}">{{ l.native_name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                        #}
+                        {{ social_links }}
+                        <ul class="menu-horizontal separator">
+                            <li><a href="#" data-search-toggle><i class="fa fa-search"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-wrapper" data-large-menu>
+            <div class="column row">
+                <form role="search" method="get" action="{{ site.link }}" class="hide-for-large">
+                    <input class="input-group-field search-form__field" name="s" type="text" value="{{ function('get_search_query') }}" placeholder="{{ __('wp.search.text') }}">
+                </form>
+                {#
+                <ul class="menu-horizontal locales hide-for-large">
+                    {% for l in locales %}
+                        <li><a href="{{ l.url }}">{{ l.code }}</a></li>
+                    {% endfor %}
+                </ul>
+                #}
+                {{ ent.menu(menu_primary, 'menu') }}
+                <div class="social-wrapper hide-for-large">{{ social_links }}</div>
+            </div>
+        </div>
+	</header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <div class="row">
+            <div class="small-12 medium-6 large-5 columns">
+                {{ footer_address }}
+            </div>
+            <div class="small-12 medium-6 large-4 columns newsletter">
+                {#
+                <p><strong>Subscriute al nostre butlletí</strong></p>
+                <div class="row medium-collapse">
+                    <div class="small-12 medium-4 columns">
+                        <input type="text" placeholder="Nom" />
+                    </div>
+                    <div class="small-12 medium-8 columns">
+                        <input type="text" placeholder="Email" />
+                    </div>
+                </div>
+                #}
+            </div>
+            <div class="small-12 large-3 columns social-links">
+                {{ social_links }}
+            </div>
+        </div>
+    </footer>
+    <script src="{{ asset('vendors.js') }}"></script>
+    <script src="{{ asset('main.js') }}"></script>
+    <script>require('js/main.js');</script>
+    {{ wp_footer }}
+</body>
+</html>
+{% endspaceless %}
