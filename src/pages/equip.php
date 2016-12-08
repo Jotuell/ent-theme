@@ -7,7 +7,7 @@ $team_hide_for_collaborator = ['relation' => 'AND', ['field' => 'type', 'value' 
 
 Container::make('post_meta', 'Formulari equip')
     ->show_on_post_type('page')
-    ->show_on_page(get_page_by_path('qui-som/equip')->ID)
+    //->show_on_page(get_page_by_path('qui-som/equip')->ID)
     ->set_priority('low')
     ->add_fields([
         Field::make('complex', 'team', 'Equipo')->add_fields([

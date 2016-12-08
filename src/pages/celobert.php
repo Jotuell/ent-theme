@@ -5,7 +5,7 @@ use Carbon_Fields\Field;
 
 Container::make('post_meta', 'Formulari Celobert')
     ->show_on_post_type('page')
-    ->show_on_page(get_page_by_path('qui-som/celobert')->ID)
+    //->show_on_page(get_page_by_path('qui-som/celobert')->ID)
     ->set_priority('low')
     ->add_fields([
         Field::make('complex', 'clients', 'Clientes')->add_fields([
