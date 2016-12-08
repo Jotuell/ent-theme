@@ -16,10 +16,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="pingback" href="{{ site.pingback_url }}">
-    <link href="https://fonts.googleapis.com/css?family=Heebo:300,400,700" rel="stylesheet">
     {{ wp_head }}
 </head>
 <body class="{{ body_class }}">
+    <header class="mu-header header-a">
+        <div class="header-a__logo-wrapper" data-mu-fixed="small medium">
+            <div class="row column mu-header__row mu-header__row--logo">
+                <a class="mu-header__logo" href="{{ site.link }}"><h1>Company Name</h1></a>
+                <div class="mu-header__hover show-for-large">
+                    <ul class="mu-header__alt-menu">
+                        <li><a href="#">ES</a></li>
+                        <li><a href="#">CA</a></li>
+                        <li><a href="#">EN</a></li>
+                    </ul>
+                    <ul class="mu-header__alt-menu mu-header__alt-menu--separator">
+                        <li><a href="#"><i class="fa fa-fw fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-facebook"></i></a></li>
+                    </ul>
+                    <ul class="mu-header__alt-menu mu-header__alt-menu--separator">
+                        <li><a href="#"><i class="fa fa-fw fa-search"></i></a></li>
+                    </ul>
+                </div>
+                <div class="mu-header__hover mu-header__hover--middle hide-for-large">
+                    <a class="mu-header__hamburger"><i class="fa fa-fw fa-bars"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="header-a__menu-wrapper" data-mu-fixed="large">
+            <div class="row column show-for-large">
+                {{ ent.menu(main_menu, 'menu') }}
+            </div>
+        </div>
+    </header>
+    {#
 	<header>
         <div class="top-border"></div>
         <div class="search-form" style="display: none;" data-search-modal>
@@ -46,7 +76,6 @@
                         </div>
                     </div>
                     <div class="secondary-container show-for-large">
-                        {#
                         <ul class="menu-horizontal locales-wrapper" data-dropdown-menu>
                             <li>
                                 <a href="#">{{ locale.native_name }} <i class="fa fa-angle-down"></i></a>
@@ -57,7 +86,6 @@
                                 </ul>
                             </li>
                         </ul>
-                        #}
                         {{ social_links }}
                         <ul class="menu-horizontal separator">
                             <li><a href="#" data-search-toggle><i class="fa fa-search"></i></a></li>
@@ -71,18 +99,17 @@
                 <form role="search" method="get" action="{{ site.link }}" class="hide-for-large">
                     <input class="input-group-field search-form__field" name="s" type="text" value="{{ function('get_search_query') }}" placeholder="{{ __('wp.search.text') }}">
                 </form>
-                {#
                 <ul class="menu-horizontal locales hide-for-large">
                     {% for l in locales %}
                         <li><a href="{{ l.url }}">{{ l.code }}</a></li>
                     {% endfor %}
                 </ul>
-                #}
                 {{ ent.menu(menu_primary, 'menu') }}
                 <div class="social-wrapper hide-for-large">{{ social_links }}</div>
             </div>
         </div>
 	</header>
+    #}
     <main>
         {% block content %}
         {% endblock %}
