@@ -1,0 +1,32 @@
+@charset 'utf-8';
+
+@import 'vars';
+@import 'mixins';
+
+@import 'settings/foundation-settings';
+@import 'settings/foundation-components';
+@import 'settings/munger-settings';
+@import 'settings/munger-components';
+
+// Font Awesome Path
+$fa-font-path: "fonts";
+@import 'font-awesome';
+
+// Slick Carousel
+@import 'slick.scss';
+@import 'slick-theme.scss';
+
+// Magnific Popup
+@import 'magnific-popup';
+
+// General
+@import 'layout';
+@import 'forms';
+
+// Components
+//@import 'components/...';
+
+// Layout
+//@import 'layout/...';
+
+p:empty { display: none; }

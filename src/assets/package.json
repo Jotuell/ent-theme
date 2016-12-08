@@ -1,0 +1,29 @@
+{
+  "name": "ent-build",
+  "description": "Build script for Ent themes",
+  "author": "doup",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "watch": "rm -rf ../../assets && brunch watch",
+    "build": "rm -rf ../../assets && brunch build --production"
+  },
+  "dependencies": {
+    "font-awesome": "^4.6.3",
+    "foundation-sites": "^6.2.3",
+    "jquery": "^2.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "brunch": "^2.0.0",
+    "copycat-brunch": "^1.1.0",
+    "css-brunch": "^2.6.1",
+    "csswring": "^5.1.0",
+    "fingerprint-brunch": "^1.2.5",
+    "javascript-brunch": "^2.0.0",
+    "sass-brunch": "^2.6.3"
+  }
+}

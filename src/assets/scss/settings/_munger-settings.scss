@@ -1,0 +1,40 @@
+// Layout
+$mu-header-logo-size: (
+    small:  165px 50px,
+    medium: 220px 65px,
+    large:  260px 78px,
+);
+//$mu-header-logo-size: 260px 80px;
+$mu-header-padding: .5;
+
+// Misc
+$mu-anchor-offset: -100px;
+
+$mu-bg-default-color: #fff;
+$mu-bg-neutral-color: #f8f8f8;
+$mu-bg-primary-color: $primary-color;
+$mu-bg-secondary-color: #fce6a4;
+
+// Typography
+$mu-small-size: .9rem;
+$mu-smaller-size: .8rem;
+
+
+// Slick
+// Slick icon entity codes outputs the following
+// "\2190" outputs ascii character "←"
+// "\2192" outputs ascii character "→"
+// "\2022" outputs ascii character "•"
+$slick-font-path: "../fonts" !default;
+$slick-font-family: "FontAwesome" !default;
+$slick-loader-path: "./" !default;
+$slick-arrow-color: $medium-gray !default;
+$slick-dot-color: $white !default;
+$slick-dot-color-active: $slick-dot-color !default;
+$slick-prev-character: "\f053" !default;
+$slick-next-character: "\f054" !default;
+$slick-dot-character: "\f111" !default;
+$slick-dot-size: 6px !default;
+$slick-opacity-default: 0.75 !default;
+$slick-opacity-on-hover: 1 !default;
+$slick-opacity-not-active: 0.25 !default;
