@@ -1,0 +1,26 @@
+.ent-widget {
+    @include mu-with-gutter-size(.5, margin-top, padding-bottom, margin-bottom);
+    border-bottom: 1px solid $light-gray;
+}
+
+.ent-widget:first-child {
+    margin-top: 0;
+}
+
+.ent-widget:last-child {
+    border-bottom: 0;
+}
+
+.ent-widget-recent-posts .mu-icon-list {
+    margin: 0;
+}
+
+.ent-widget-recent-posts__date {
+    font-size: $mu-smaller-size;
+    margin-left: .5em;
+    color: $dark-gray;
+}
+
+.ent-widget-search .input-group {
+    margin-bottom: 0;
+}

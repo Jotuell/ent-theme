@@ -1,0 +1,109 @@
+.ent-posts-entry {
+    @include mu-with-gutter-size(1.5, margin-bottom);
+}
+
+.ent-posts-entry__title,
+.ent-posts-entry__meta,
+.ent-posts-entry__excerpt,
+.ent-post__title,
+.ent-post__meta {
+    margin: 0;
+}
+
+.ent-posts-entry__title,
+.ent-post__title {
+    word-wrap: break-word;
+}
+
+.ent-posts-entry__meta,
+.ent-post__meta {
+    @include mu-with-gutter-size(.1, margin-top);
+    @include mu-with-gutter-size(.4, margin-bottom);
+    
+    a {
+        color: $black;
+    }
+}
+
+.ent-posts-entry__excerpt,
+.ent-post__content {
+    word-wrap: break-word;
+}
+
+.ent-posts-entry__title a {
+    color: $black;
+}
+
+.ent-posts-entry__excerpt .read-more {
+    font-size: $mu-smaller-size;
+    border-radius: 20px;
+    padding: 3px 10px;
+    border: 1px solid $primary-color;
+    margin-left: .25em;
+    white-space: nowrap;
+    
+    &:hover {
+        background-color: $mu-bg-neutral-color;
+    }
+}
+
+.ent-posts-entry__featured-image {
+    float: right;
+    @include mu-with-gutter-size(.5, padding-left, padding-bottom);
+}
+
+.ent-posts-filter {
+    @include mu-with-gutter-size(.25, padding-bottom);
+    @include mu-with-gutter-size(.75, margin-bottom);
+    border-bottom: 1px solid $medium-gray;
+}
+
+.ent-posts-filter__title {
+    margin: 0;
+}
+
+.ent-posts-not-found {
+    background-color: $light-gray;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ent-posts-not-found__content {
+}
+
+.ent-post__content {
+    img {
+        @include mu-with-gutter-size(.5, padding);
+    }
+
+    .wp-caption {
+        max-width: 100%;
+        @include mu-with-gutter-size(.5, padding);
+        
+        img {
+            padding: 0;
+        }
+    }
+    
+    .wp-caption-text {
+        color: $dark-gray;
+        font-size: $mu-small-size;
+        margin-bottom: 0;
+    }
+
+    .aligncenter {
+        margin: 0 auto;
+    }
+    
+    .alignleft {
+        float: left;
+        padding-left: 0;
+    }
+    
+    .alignright {
+        float: right;
+        padding-right: 0;
+    }
+}

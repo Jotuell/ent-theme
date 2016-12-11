@@ -1,0 +1,23 @@
+h1, h2, h3, h4, h5, h6 {
+    @include mu-with-gutter-size(.75, margin-top); 
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+address, pre {
+    margin-bottom: 1rem;
+}
+
+acronym[title] {
+    border-bottom: 1px dotted;
+}
+
+p:empty {
+    display: none;
+}
+
+blockquote {
+    padding-top: 0;
+}

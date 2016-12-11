@@ -1,6 +1,8 @@
 @import 'foundation';
 //@import 'motion-ui';
 
+$global-flexbox: true;
+
 @include foundation-global-styles;
 //@include foundation-grid;
 @include foundation-flex-grid;
@@ -33,7 +35,7 @@
 //@include foundation-sticky;
 //@include foundation-reveal;
 //@include foundation-switch;
-//@include foundation-table;
+@include foundation-table;
 //@include foundation-tabs;
 //@include foundation-thumbnail;
 //@include foundation-title-bar;

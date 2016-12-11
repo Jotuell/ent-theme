@@ -22,11 +22,10 @@ $fa-font-path: "fonts";
 // General
 @import 'layout';
 @import 'forms';
+@import 'typography';
 
 // Components
-//@import 'components/...';
+@import 'components/widgets';
 
 // Layout
-//@import 'layout/...';
-
-p:empty { display: none; }
+@import 'layout/blog';

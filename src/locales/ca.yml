@@ -22,9 +22,26 @@ blog:
     more_news:  Veure més notícies
     more_posts: Veure més articles
     
+taxonomy:
+    post_tag:
+        title: Etiqueta
+    category:
+        title: Categoria
 wp:
+    404:
+        text: Pàgina no trobada
     search:
         text:       Cerca
         no_results: No hi ha resultats
     blog:
-        read_more: Llegir més
+        author:       Autor
+        day:          Dia
+        day_format:   j \d\e F, Y # 15 de març, 2013
+        month:        Mes
+        month_format: F Y # març 2013
+        year:         Any
+        year_format:  Y # 2013
+        read_more:    Llegir més
+        prev:         Anterior
+        next:         Següent
+        posts_not_found: No hay ninguna entrada con el filtro especificado.
