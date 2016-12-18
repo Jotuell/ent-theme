@@ -6,12 +6,31 @@ html, body {
     overflow: hidden;
 }
 
-.mu-header, .header-a__menu-wrapper {
+.header__logo-wrapper, .header__menu-wrapper {
     background-color: $light-gray;
 }
 
 .mu-header__logo {
     background-color: $medium-gray;
+}
+
+.mu-header {
+    .ent-header-locales--dropdown {
+        .submenu {
+            margin: 0;
+            left: -10px;
+            top: 30px;
+        }
+    }
+    
+    .ent-header-locales--list {
+        text-transform: uppercase;
+    }
+    
+    .ent-widget-icons {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 main {
@@ -26,4 +45,8 @@ footer {
     padding-bottom: 100px;
     color: $medium-gray;
     background-color: $black;
+    
+    .ent-widget-icons {
+        text-align: right;
+    }
 }
