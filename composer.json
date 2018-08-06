@@ -1,8 +1,19 @@
 {
-    "name": "{{author_slug}}/{{theme_slug}}",
+    "name": "jotuell/ent-theme",
     "type": "wordpress-theme",
     "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Asier",
+            "email": "asier@illarra.com",
+            "homepage": "http://doup.illarra.com"
+        },
+        {
+            "name": "Lluís",
+            "email": "luisponshernandez@gmail.com"
+        }
+    ],
     "require": {
-        "doup/ent": "*"
+        "jotuell/ent": "dev-master"
     }
 }
